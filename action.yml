@@ -28,7 +28,7 @@ runs:
         shell: bash
         env:
           OMNIEDGE_SECURITY_KEY: ${{ inputs.securitykey }}
-          OMNIEDGE_VIRTUALNETWORK_ID: ${{input.virtualnetworkid}}
+          OMNIEDGE_VIRTUALNETWORK_ID: ${{ inputs.virtualnetworkid }}
           HOSTNAME: ${{ inputs.hostname }}
         run: |
           omniedge login -s ${OMNIEDGE_SECURITY_KEY}
