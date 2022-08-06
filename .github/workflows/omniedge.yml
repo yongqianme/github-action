@@ -14,6 +14,10 @@ jobs:
         with:
           securitykey: ${{ secrets.OMNIEDGE_SECURITY_KEY }}
           virtualnetworkid: ${{ secrets.OMNIEDGE_VIRTUALNETWORK_ID }}
+      - name: install network tools
+        run: |
+          sudo -E apt-get -y update
+          sudo -E apt-get install -y traceroute
       - name: check connection
         run: |
           ps aux | grep omniedge
