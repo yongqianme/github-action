@@ -1,0 +1,20 @@
+name: omniedge
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: omniedge Action
+        uses: ./
+        with:
+          securitykey: ${{ secrets.OMNIEDGE_SECURITY_KEY }}
+          virtualnetworkid: ${{ secrets.OMNIEDGE_VIRTUALNETWORK_ID }}
+      - name: check connection
+        run: |
+          ps aux | grep omniedge
+          ping 100.100.100.173
