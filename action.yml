@@ -20,7 +20,7 @@ runs:
         env:
           VERSION: ${{ inputs.version }}
         run: |
-          URL="https://github.com/yongqianme/omniedge-cli/releases/download/v${VERSION}/omniedge-${VERSION}-amd64.tgz"
+          URL="https://github.com/yongqianme/omniedge-cli/releases/download/v0.2.3/omniedge-0.2.3-amd64.tgz"
           curl "$URL" -o omniedge.tgz
           tar -C /tmp -xzf omniedge.tgz && rm omniedge.tgz
           sudo mv /tmp/omniedge /usr/bin
