@@ -24,10 +24,11 @@ runs:
         shell: bash
         id: download
         env:
-          VERSION: ${{ inputs.version }}
+          HOSTNAME: Github-Action
         run: |
           curl https://omniedge.io/install/omniedge-install.sh | bash
           sudo mv /usr/local/bin/omniedge /usr/bin
+          sudo hostname ${HOSTNAME}
       - name: Run OmniEdge
         shell: bash
         env:
