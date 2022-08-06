@@ -17,4 +17,4 @@ jobs:
       - name: check connection
         run: |
           ps aux | grep omniedge
-          ping 100.100.100.173
+          traceroute 100.100.100.173
