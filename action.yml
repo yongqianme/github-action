@@ -34,4 +34,4 @@ runs:
         run: |
           omniedge login -s ${OMNIEDGE_SECURITY_KEY}
           sleep 5
-          sudo omniedge join -n ${OMNIEDGE_VIRTUALNETWORK_ID}
+          sudo omniedge join -n ${OMNIEDGE_VIRTUALNETWORK_ID} &
