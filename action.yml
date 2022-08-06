@@ -14,17 +14,20 @@ inputs:
 runs:
     using: 'composite'
     steps:
+      - name: Prepare
+        shell: bash
+        id: prepare
+        run : |
+          sudo -E apt-get -y update
+          sudo -E apt-get install -y unzip
       - name: Download
         shell: bash
         id: download
         env:
           VERSION: ${{ inputs.version }}
         run: |
-          URL="https://github.com/yongqianme/omniedge-cli/releases/download/v0.2.3/omniedge-0.2.3-amd64.tgz"
-          curl -L -o omniedge.tgz "$URL"
-          tar -C /tmp -xzf omniedge.tgz && rm omniedge.tgz
-          sudo mv /tmp/omniedge /usr/bin
-          sudo chmod +x /usr/bin/omniedge
+          curl https://omniedge.io/install/omniedge-install.sh | bash
+          sudo mv /usr/local/bin/omniedge /usr/bin
       - name: Run OmniEdge
         shell: bash
         env:
