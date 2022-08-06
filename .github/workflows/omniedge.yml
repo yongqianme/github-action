@@ -9,16 +9,17 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
+      - name: install network tools
+        run: |
+          sudo -E apt-get -y update
+          sudo -E apt-get install -y traceroute net-tools
       - name: omniedge Action
         uses: ./
         with:
           securitykey: ${{ secrets.OMNIEDGE_SECURITY_KEY }}
           virtualnetworkid: ${{ secrets.OMNIEDGE_VIRTUALNETWORK_ID }}
-      - name: install network tools
-        run: |
-          sudo -E apt-get -y update
-          sudo -E apt-get install -y traceroute
       - name: check connection
         run: |
           ps aux | grep omniedge
+          ifconfig | grep inet
           traceroute 100.100.100.173
